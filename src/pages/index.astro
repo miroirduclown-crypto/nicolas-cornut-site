@@ -1,0 +1,82 @@
+---
+import Layout from '../components/layout/Layout.astro';
+---
+
+<Layout title="Nicolas Cornut – Vivre est une aventure" description="Psychopraticien en Gestalt-thérapie, formateur et superviseur. Miroir du Clown · Construisez votre Royaume · La Scène intérieure.">
+
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__photo">
+        <img src="/images/NCornut4-portrait.jpg" alt="Nicolas Cornut" width="400" height="600" />
+      </div>
+      <div class="hero__text">
+        <p class="hero__tagline">Vivre est une aventure</p>
+        <h1 class="hero__name">Nicolas Cornut</h1>
+        <h2 class="hero__subtitle">Psychopraticien en Gestalt-thérapie – formateur – superviseur</h2>
+        <p class="hero__desc">Créateur d'expériences apprenantes ludiques et héroïques</p>
+        <p class="hero__desc"><strong>Miroir du Clown – Construisez votre Royaume – La Scène intérieure</strong></p>
+        <p class="hero__desc"><em>Accompagnement psychologique pour particuliers et professionnels</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-sections">
+    <div class="home-sections__inner">
+      <a href="/la-scene-interieure/" class="home-card">
+        <h2 class="home-card__title">La Scène intérieure</h2>
+        <span class="home-card__link">En savoir +</span>
+      </a>
+      <a href="/particuliers/" class="home-card">
+        <h2 class="home-card__title">Particuliers</h2>
+        <span class="home-card__link">En savoir +</span>
+      </a>
+      <a href="/groupe-de-supervision-initiatique/" class="home-card">
+        <h2 class="home-card__title">Professionnels</h2>
+        <span class="home-card__link">En savoir +</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="podcast">
+    <div class="podcast__inner">
+      <h3 class="podcast__label">Podcast</h3>
+      <iframe
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/show/2tt2PDaNfAnByfXpBYs0Ow?utm_source=generator"
+        width="100%"
+        height="152"
+        frameBorder="0"
+        allowfullscreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .hero { background:#fff; padding:60px 24px 40px; }
+  .hero__inner { max-width:var(--max-width-container); margin:0 auto; display:flex; align-items:center; gap:60px; }
+  .hero__photo img { width:300px; max-width:100%; height:auto; border-radius:2px; box-shadow:0 8px 30px rgba(0,0,0,.12); }
+  .hero__text { flex:1; }
+  .hero__tagline { font-style:italic; color:var(--color-neutral-light); font-size:1rem; margin:0 0 8px; }
+  .hero__name { font-family:var(--font-display); font-size:3rem; color:var(--color-primary); margin:0 0 16px; line-height:1.1; }
+  .hero__subtitle { font-size:1.15rem; font-weight:600; color:var(--color-neutral); margin:0 0 16px; line-height:1.4; }
+  .hero__desc { font-size:1rem; color:#555; margin:0 0 10px; }
+  .home-sections { background:var(--color-surface); padding:60px 24px; }
+  .home-sections__inner { max-width:var(--max-width-container); margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .home-card { display:flex; flex-direction:column; align-items:center; background:#fff; padding:40px 32px; border:1px solid var(--color-border); text-align:center; text-decoration:none; transition:box-shadow .2s,transform .2s; border-top:3px solid var(--color-primary); }
+  .home-card:hover { box-shadow:0 6px 24px rgba(0,0,0,.1); transform:translateY(-2px); text-decoration:none; }
+  .home-card__title { font-family:var(--font-display); font-size:1.4rem; color:var(--color-neutral); margin:0 0 20px; font-weight:400; display:block; border-bottom:none; }
+  .home-card__link { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--color-primary); display:block; margin-top:auto; }
+  .podcast { padding:40px 24px 60px; background:#fff; }
+  .podcast__inner { max-width:700px; margin:0 auto; }
+  .podcast__label { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--color-neutral-light); margin:0 0 16px; }
+  @media(max-width:768px) {
+    .hero__inner { flex-direction:column; gap:32px; }
+    .hero__photo img { width:100%; max-width:340px; }
+    .hero__name { font-size:2.2rem; }
+    .home-sections__inner { grid-template-columns:1fr; }
+  }
+</style>

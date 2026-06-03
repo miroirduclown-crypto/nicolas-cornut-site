@@ -1,0 +1,202 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="/" aria-label="Nicolas Cornut" class="logo-circle">
+          <img src="/images/logoARC.jpeg" alt="Nicolas Cornut" width="90" loading="lazy" />
+        </a>
+        <p class="footer__tagline">Vivre est une aventure</p>
+        <p class="footer__desc">
+          Psychopraticien en Gestalt-thérapie, formateur et superviseur.
+          Miroir du Clown · Construisez votre Royaume · La Scène intérieure.
+        </p>
+      </div>
+
+      <div class="footer__nav">
+        <h3 class="footer__heading">Navigation</h3>
+        <ul class="footer__links">
+          <li><a href="/particuliers/">Particuliers</a></li>
+          <li><a href="/la-scene-interieure/">La Scène intérieure</a></li>
+          <li><a href="/groupe-de-supervision-initiatique/">Groupe de supervision</a></li>
+          <li><a href="/qui-suis-je/">Qui suis-je ?</a></li>
+          <li><a href="/clown/">Miroir du Clown</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__nav">
+        <h3 class="footer__heading">Ressources</h3>
+        <ul class="footer__links">
+          <li><a href="/la-gestalt-therapie/">La Gestalt-thérapie</a></li>
+          <li><a href="/ma-deontologie/">Ma déontologie</a></li>
+          <li><a href="/contenus-en-ligne/">Contenus en ligne</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__contact">
+        <h3 class="footer__heading">Cabinet</h3>
+        <p class="footer__addr">
+          Nicolas Cornut<br />
+          98 avenue Pasteur<br />
+          Les Lilas<br />
+          <em>5 min. du métro Mairie des Lilas, ligne 11</em>
+        </p>
+        <ul class="footer__links" style="margin-top:12px">
+          <li><a href="mailto:nicolas.cornut@gmail.com">nicolas.cornut@gmail.com</a></li>
+          <li><a href="tel:+33682086320">06 82 08 63 20</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; {year} Nicolas Cornut. Tous droits réservés.</p>
+      <ul class="footer__legal">
+        <li><a href="/mentions-legales/">Mentions légales & CGV</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #c6d027;
+    color: #222;
+    padding: 60px 0 0;
+  }
+
+  .footer__inner {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
+
+  .footer__brand .logo-circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+
+  .footer__brand img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .footer__tagline {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--color-primary);
+    font-size: 14px;
+    margin: 0 0 10px;
+    font-weight: 700;
+  }
+
+  .footer__desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+  }
+
+  .footer__heading {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #111;
+    margin: 0 0 14px;
+  }
+
+  .footer__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .footer__links a {
+    font-size: 13px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer__links a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .footer__addr {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .footer__addr em {
+    font-style: italic;
+    font-size: 12px;
+    color: #777;
+  }
+
+  .footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-size: 12px;
+    color: #444;
+    background: #242424;
+    margin: 0 -24px;
+    padding: 16px 24px;
+    color: #aaa;
+  }
+
+  .footer__bottom p { margin: 0; }
+
+  .footer__legal {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer__legal a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer__legal a:hover { color: #ccc; text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 520px) {
+    .footer__grid { grid-template-columns: 1fr; }
+    .footer__bottom { flex-direction: column; gap: 10px; text-align: center; }
+  }
+</style>

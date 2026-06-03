@@ -1,0 +1,105 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import datesData from '../data/dates.json';
+const dates = datesData.scene_interieure_formation.dates;
+---
+<Layout title="La Scène intérieure – Formation" description="Formation à la Scène intérieure pour les professionnels de la relation d'aide. Dispositif thérapeutique de groupe à la croisée du psychodrame et de la Gestalt-thérapie.">
+  <div class="page-content">
+    <h1>La Scène intérieure – La formation</h1>
+    <p>Vous êtes professionnel·le de la relation d'aide et vous souhaitez vous former à la pratique de la Scène intérieure.</p>
+    <p><strong>La Scène intérieure®</strong> est un dispositif thérapeutique de groupe que j'ai développé à la croisée du <strong>psychodrame</strong>, de la <strong>Gestalt-thérapie</strong>, de l'<strong>ICV (Intégration du Cycle de la Vie)</strong>, de l'<strong>art-thérapie</strong> et d'une pensée de la <strong>mise en scène inspirée du cinéma</strong>.</p>
+    <p>Il permet le traitement de <strong>situations cliniques problématiques,</strong> accompagnées de :</p>
+    <ul>
+      <li>désajustements relationnels</li>
+      <li>réactions émotionnelles disproportionnées</li>
+      <li>tensions corporelles</li>
+      <li>confusion</li>
+      <li>figements</li>
+      <li>souffrances diffuses</li>
+      <li>vécu d'inachèvement…</li>
+    </ul>
+    <p>Le dispositif repose sur une hypothèse centrale :</p>
+    <blockquote>
+      <strong>La représentation scénique fait émerger des affects implicites qui n'étaient pas encore pleinement accessibles à la conscience, et leur réintégration progressive lors de la répétition de la scène permet un processus de symbolisation et d'intégration.</strong>
+    </blockquote>
+
+    <h3>Les principes cliniques fondamentaux</h3>
+    <ul class="no-bullet">
+      <li><strong>Cadre groupal contenant</strong> : confidentialité, non-passage à l'acte, enveloppe groupale protectrice.</li>
+      <li><strong>Mise en scène d'une situation problématique</strong> : à partir des éléments disponibles, sans visée interprétative.</li>
+      <li><strong>Position initiale de spectateur</strong> : le sujet commence par regarder sa scène.</li>
+      <li><strong>Émergence circulaire</strong> : la représentation fait émerger de nouveaux affects implicites.</li>
+      <li><strong>Ajout de ces affects à la scène</strong> : ils sont symbolisés dans la représentation.</li>
+      <li><strong>Répétitions</strong> : la scène est reprise depuis le début plusieurs fois, et les affects qui émergent sont ajoutés.</li>
+      <li><strong>Construction d'une représentation d'appui</strong> : les éléments auparavant disjoints se relient dans une forme cohérente.</li>
+      <li><strong>Résonance groupale secondaire</strong> : un temps de partage permet aux autres participants d'élaborer ce que la scène a mobilisé en eux.</li>
+    </ul>
+
+    <h3>Différences avec le psychodrame</h3>
+    <p>Le dispositif se distingue du psychodrame classique par :</p>
+    <ul>
+      <li>la priorité donnée à la <strong>fonction de représentation</strong> plutôt qu'à l'action</li>
+      <li>la <strong>position de témoin</strong> du sujet au début du travail</li>
+      <li>le rôle structurant de la <strong>répétition intégrale</strong></li>
+      <li>l'absence de focalisation première sur la catharsis ou l'expérimentation dramatique</li>
+    </ul>
+
+    <h3>Différences avec les constellations</h3>
+    <p>Il s'en distingue également par :</p>
+    <ul>
+      <li>l'absence de visée systémique ou transgénérationnelle prédéfinie</li>
+      <li>l'absence de postulat d'un « savoir » des représentants</li>
+      <li>l'ancrage exclusif dans <strong>l'expérience vécue du sujet</strong></li>
+      <li>une co-construction clinique progressive, sans lecture de vérité cachée du système</li>
+    </ul>
+
+    <h3>Finalité clinique</h3>
+    <p>Le travail vise la constitution d'une <strong>forme symbolique vivante</strong> sur laquelle le sujet puisse s'appuyer : non seulement une compréhension, mais une <strong>représentation incarnée et intégrée</strong> reliant affects, sensations, images et expérience relationnelle.</p>
+    <p>Le dispositif fonctionne pour travailler une situation inachevée ou un rêve, pour de la psychothérapie, de la supervision ou du coaching. Il permet au thérapeute d'animer seul un groupe de thérapie.</p>
+
+    <h2>La formation</h2>
+    <p>Formation à l'utilisation de la Scène intérieure comme outil d'accompagnement, d'exploration symbolique et de régulation relationnelle dans les pratiques d'animation de groupe, d'accompagnement ou de médiation expressive.</p>
+
+    <h4>Prérequis :</h4>
+    <ul>
+      <li>avoir une pratique d'accompagnement (psychothérapie, coaching…)</li>
+      <li>avoir fait un travail approfondi sur soi-même</li>
+      <li>avoir participé à plusieurs <a href="/la-scene-interieure-journees-decouverte/">journées découvertes</a></li>
+      <li>avoir l'accord de Nicolas pour s'inscrire à la formation</li>
+      <li>un entretien préalable avec Nicolas est nécessaire</li>
+    </ul>
+
+    <h4>Compétences à atteindre :</h4>
+    <p>Mettre en œuvre le dispositif de la Scène intérieure implique de :</p>
+    <ul>
+      <li>savoir créer un cadre sécure et le tenir</li>
+      <li>choisir une figure à représenter</li>
+      <li>ordonner les affects émergents</li>
+      <li>repérer un état dissociatif</li>
+      <li>maintenir le consultant dans sa fenêtre de tolérance</li>
+      <li>permettre au consultant de discerner les affects émergents</li>
+      <li>permettre au groupe de partager ses résonances</li>
+      <li>faciliter l'assimilation de l'expérience</li>
+    </ul>
+
+    <div class="info-box">
+      <h3>Prochaines dates de la formation</h3>
+      {dates.length > 0 ? (
+        <ul class="dates-ul">{dates.map(d => <li>{d}</li>)}</ul>
+      ) : (
+        <p><em>Prochaines dates bientôt disponibles.</em></p>
+      )}
+      <a href="https://forms.gle/ySmrByW94AkEbBSa6" target="_blank" rel="noopener" class="btn" style="margin-top:16px;display:inline-block;">Inscription</a>
+    </div>
+
+    <div style="margin-top:2rem;">
+      <a href="/la-scene-interieure-journees-decouverte/" class="btn">En savoir plus sur les Journées découvertes</a>
+    </div>
+  </div>
+</Layout>
+<style>
+  ul.no-bullet { list-style:none !important; padding-left:0 !important; }
+  ul.no-bullet li { margin-bottom:0.4rem; }
+  blockquote { border-left:3px solid var(--color-primary); padding:16px 24px; margin:24px 0; background:var(--color-surface); }
+  .info-box { background:var(--color-surface); border-left:3px solid var(--color-primary); padding:24px 28px; margin:32px 0; }
+</style>

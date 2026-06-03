@@ -1,0 +1,180 @@
+---
+---
+
+<section class="pre-footer">
+  <div class="pre-footer__inner">
+
+    <!-- Newsletter -->
+    <div class="pre-footer__block">
+      <h2 class="pre-footer__title">Restez informé·e</h2>
+      <p class="pre-footer__desc">Dates des prochaines sessions, actualités et ressources directement dans votre boîte mail.</p>
+      <form class="pre-footer__form" id="prefooter-form" novalidate>
+        <div class="pre-footer__row">
+          <input type="text" name="prenom" placeholder="Votre prénom" class="pre-footer__input" autocomplete="given-name" />
+          <input type="email" name="email" placeholder="Votre adresse e-mail *" required class="pre-footer__input" autocomplete="email" />
+          <button type="submit" class="pre-footer__btn" id="prefooter-btn">Je m'inscris</button>
+        </div>
+        <p class="pre-footer__msg" id="prefooter-msg" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <!-- Podcast -->
+    <div class="pre-footer__block">
+      <h2 class="pre-footer__title">Le podcast</h2>
+      <p class="pre-footer__desc"><em>Dans la tête de Nicolas Cornut</em> — disponible sur Spotify</p>
+      <iframe
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/show/2tt2PDaNfAnByfXpBYs0Ow?utm_source=generator"
+        width="100%"
+        height="152"
+        frameBorder="0"
+        allowfullscreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      ></iframe>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('prefooter-form') as HTMLFormElement | null;
+  const btn  = document.getElementById('prefooter-btn')  as HTMLButtonElement | null;
+  const msg  = document.getElementById('prefooter-msg')  as HTMLElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form || !btn || !msg) return;
+
+    const data   = new FormData(form);
+    const email  = (data.get('email')  as string)?.trim();
+    const prenom = (data.get('prenom') as string)?.trim();
+
+    if (!email) {
+      msg.textContent = 'Veuillez saisir votre adresse e-mail.';
+      msg.className   = 'pre-footer__msg pre-footer__msg--error';
+      return;
+    }
+
+    btn.disabled    = true;
+    btn.textContent = 'Inscription…';
+    msg.textContent = '';
+
+    try {
+      const res  = await fetch('/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, prenom }),
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        msg.textContent = '✅ Merci ! Vous êtes bien inscrit·e.';
+        msg.className   = 'pre-footer__msg pre-footer__msg--success';
+        form.reset();
+      } else {
+        msg.textContent = json.error || 'Une erreur est survenue.';
+        msg.className   = 'pre-footer__msg pre-footer__msg--error';
+      }
+    } catch {
+      msg.textContent = 'Erreur réseau. Veuillez réessayer.';
+      msg.className   = 'pre-footer__msg pre-footer__msg--error';
+    } finally {
+      btn.disabled    = false;
+      btn.textContent = "Je m'inscris";
+    }
+  });
+</script>
+
+<style>
+  .pre-footer {
+    background: #c6d027;
+    padding: 56px 24px 40px;
+  }
+
+  .pre-footer__inner {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .pre-footer__title {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #111;
+    margin: 0 0 10px;
+    border-bottom: none;
+  }
+
+  .pre-footer__desc {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    margin: 0 0 18px;
+  }
+
+  .pre-footer__row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .pre-footer__input {
+    flex: 1;
+    min-width: 130px;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 4px;
+    color: #222;
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 10px 13px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .pre-footer__input::placeholder { color: #777; }
+  .pre-footer__input:focus { background: white; border-color: var(--color-primary); }
+
+  .pre-footer__btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .pre-footer__btn:hover:not(:disabled) { background: #3d0109; }
+  .pre-footer__btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .pre-footer__msg {
+    font-size: 13px;
+    min-height: 18px;
+    margin: 10px 0 0;
+  }
+
+  .pre-footer__msg--success { color: #2d6a4f; font-weight: 600; }
+  .pre-footer__msg--error   { color: #c0392b; }
+
+  @media (max-width: 820px) {
+    .pre-footer__inner { grid-template-columns: 1fr; gap: 40px; }
+    .pre-footer__row { flex-direction: column; }
+    .pre-footer__btn { width: 100%; text-align: center; }
+  }
+</style>

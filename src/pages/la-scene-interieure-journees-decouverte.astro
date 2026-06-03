@@ -1,0 +1,43 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import datesData from '../data/dates.json';
+const dates = datesData.journee_decouverte.dates;
+---
+<Layout title="La Scène intérieure – Journée découverte" description="La Scène intérieure, journée découverte à Paris. Conditions de participation, tarif et prochaines dates.">
+  <div class="page-content">
+    <h1>La Scène intérieure — Journées découverte</h1>
+
+    <h2>Conditions de participation</h2>
+    <p>Si vous n'avez jamais fait de stage avec Nicolas Cornut ou si c'était il y a plus de 5 ans, prenez contact par SMS pour convenir d'un rendez-vous pour un entretien téléphonique.</p>
+
+    <h2>Tarif</h2>
+    <p>40€ participation comme représentant<br />
+    120€ pour faire sa Scène intérieure. Vous pouvez décider le jour même, en fonction de ce qui se passe.</p>
+
+    <h2>Où ?</h2>
+    <p>145 avenue Gambetta 75020 PARIS</p>
+
+    <h2>Horaires</h2>
+    <p>9h30-13h puis 14h30-18h</p>
+
+    <h2>Déroulé de la journée</h2>
+    <p>Après un temps où nous prendrons soin de rappeler le cadre, chacun sera invité à dire quelques mots de sa météo et de son projet pour la journée. Ensuite, nous ferons les Scènes intérieures des personnes qui le souhaitent. Il faut compter 1h à 1h30 par Scène.</p>
+
+    <h2>Pour s'inscrire</h2>
+    <p>Remplissez le formulaire en ligne et envoyez votre chèque de règlement (40€, libellé à « Miroir du Clown ») à Nicolas Cornut, 145 avenue Gambetta 75020 PARIS. Ou par virement (IBAN : FR03 2004 1000 0157 8102 5D02 009 — BIC : PSSTFRPPPAR). Les personnes qui feront leur Scène intérieure régleront la différence sur place.</p>
+
+    <div class="info-box">
+      <h3>Prochaines dates</h3>
+      {dates.length > 0 ? (
+        <ul class="dates-ul">{dates.map(d => <li>{d}</li>)}</ul>
+      ) : (
+        <p><em>Prochaines dates bientôt disponibles.</em></p>
+      )}
+      <a href="https://forms.gle/vkKjGgLBvi7SHtvM6" target="_blank" rel="noopener" class="btn" style="margin-top:16px;display:inline-block;">Inscription : c'est ici</a>
+    </div>
+  </div>
+</Layout>
+<style>
+  ul { padding-left: 1.4rem; }
+  ul li { margin-bottom: 0.4rem; }
+</style>

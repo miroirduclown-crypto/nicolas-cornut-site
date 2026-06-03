@@ -1,0 +1,41 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import datesData from '../data/dates.json';
+const dates = datesData.supervision.dates;
+---
+<Layout title="Groupe de supervision" description="Groupe de supervision initiatique en Gestalt-thérapie. Une demi-journée par mois, 4 personnes, engagement initial pour 4 séances.">
+  <div class="page-content">
+    <h1>Groupe de supervision initiatique</h1>
+    <h2>Grandir avec ceux que l'on accompagne</h2>
+
+    <p>Si le thérapeute peut aider son client, c'est parce qu'il dispose d'une certaine avance sur les problématiques que celui-ci traverse. Mais cette avance est parfois si mince qu'elle ne suffit plus : c'est précisément là que la supervision prend tout son sens.</p>
+    <p>Elle aide le thérapeute à y voir plus clair, à <strong>affiner son discernement</strong>, à <strong>élaborer de nouvelles stratégies thérapeutiques</strong> et à ouvrir des possibles inédits. Elle le <strong>consolide</strong> dans sa posture et lui permet de continuer à se former tout au long de son parcours.</p>
+    <p>La thérapie est un métier tourné vers l'autre qui, dans le même mouvement, nous transforme. <strong>La relation thérapeutique agit aussi sur le thérapeute</strong> : elle lui enseigne d'autres manières d'être au monde, l'invite à dépasser ses propres représentations et à élargir son champ de conscience. Elle le pousse <strong>à se développer</strong> pour se sentir <strong>plus vivant, plus engagé, plus ajusté.</strong></p>
+    <p>C'est l'hypothèse créatrice que je vous propose d'explorer dans ce groupe : <strong>et si le client venait, à sa manière, transformer le thérapeute ?</strong> Adopter ce regard change profondément la façon de concevoir le processus thérapeutique et le processus de supervision.</p>
+    <p>À travers son client, le thérapeute est invité à revisiter certaines zones de son existence et de son histoire. Lorsqu'il a besoin de supervision, c'est souvent le signe que son avance s'est faite trop mince pour qu'il soit <strong>confortablement installé dans son fauteuil.</strong></p>
+    <p>Nous partirons donc du <strong>vécu en séance</strong> et des difficultés rencontrées, pour explorer <strong>leurs résonances</strong> dans l'expérience propre du thérapeute.</p>
+    <p>Des apports théoriques pourront être proposés.</p>
+    <p>Les questions qui émergent sont autant d'occasions <strong>d'affirmer sa singularité</strong>, de révéler son <strong>talent particulier</strong> et de déployer <strong>sa puissance d'amour.</strong></p>
+    <h2>Conditions</h2>
+    <p><strong>Un mardi matin par mois, 4 personnes</strong> – engagement sur l'année, de septembre à juin.<br />En cas d'impossibilité sur un regroupement, nous organisons une séance individuelle au prix d'une séance de groupe.</p>
+    <p><strong>Prix :</strong> 110€</p>
+    <p><strong>Lieu :</strong> 145 av Gambetta 75020 Paris – métro Gambetta, Pelleport ou Porte des Lilas</p>
+    <div class="info-box">
+      <h3>Prochaines dates</h3>
+      {dates.length > 0 ? (
+        <ul class="dates-ul">
+          {dates.map(d => <li>{d}</li>)}
+        </ul>
+      ) : (
+        <p><em>Prochaines dates bientôt disponibles.</em></p>
+      )}
+    </div>
+    <p>Outre la supervision en groupe, je suis disponible pour de la supervision individuelle.</p>
+    <a href="mailto:nicolas.cornut@gmail.com" class="btn">Contactez-moi</a>
+  </div>
+</Layout>
+<style>
+  .info-box { background:var(--color-surface); border-left:3px solid var(--color-primary); padding:24px 28px; margin:32px 0; }
+  .info-box p { margin:0 0 8px; }
+  .info-box p:last-child { margin:0; }
+</style>

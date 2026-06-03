@@ -1,0 +1,212 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@font-face {
+  font-family: "Ribeye Marrow";
+  src: url("/fonts/RibeyeMarrow.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("/fonts/Avenir-Medium.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Couleurs — reprises du site nicolas-cornut.com actuel */
+  --color-primary: #C0392B;       /* rouge bordeaux clair */
+  --color-accent: #c6d027;        /* vert-citron (footer, accents) */
+  --color-neutral: #333333;
+  --color-neutral-light: #777777;
+  --color-surface: #f8f8f8;
+  --color-border: #eeeeee;
+
+  /* Typographie */
+  --font-display: "Ribeye Marrow", serif;   /* H1 décoratifs */
+  --font-nav: "Raleway", sans-serif;        /* navigation */
+  --font-body: "Open Sans", sans-serif;     /* corps de texte */
+  --font-heading: "Raleway", sans-serif;    /* h2, h3 (identique à nav) */
+
+  /* Layout */
+  --max-width-container: 1100px;
+  --max-width-content: 860px;
+}
+
+html {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-neutral);
+  background: #fff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); /* Raleway */
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-neutral);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2.4rem;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-family: var(--font-display); /* Ribeye Marrow — identique à clown-gestalt.fr */
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--color-primary);
+  display: inline-block;
+}
+
+h3 {
+  font-family: var(--font-display); /* Ribeye Marrow */
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1.1rem;
+}
+
+/* Listes avec puces noires dans le contenu des pages */
+.page-content ul:not(.dates-ul) {
+  list-style: disc;
+  padding-left: 1.6rem;
+  margin-bottom: 1.1rem;
+}
+
+.page-content ul:not(.dates-ul) li {
+  margin-bottom: 0.35rem;
+  padding-left: 0.2rem;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+strong {
+  font-weight: 600;
+}
+
+/* Page de contenu — layout de référence */
+.page-content {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+.page-content h1 {
+  margin-bottom: 1.5rem;
+}
+
+/* Bouton principal */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.btn:hover {
+  background: #9b2e22;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Images dans le contenu */
+.page-content img {
+  border-radius: 2px;
+  margin: 1.5rem 0;
+}
+
+/* Liste de dates */
+.dates-ul {
+  list-style: none;
+  padding: 8px 0 0;
+  margin: 0;
+}
+
+.dates-ul li {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 1rem;
+}
+
+.dates-ul li:last-child {
+  border-bottom: none;
+}
+
+/* Bloc grisé avec titre rouge — commun à toutes les pages de dates */
+.info-box {
+  background: var(--color-surface);
+  border-left: 3px solid var(--color-primary);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+
+.info-box h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  border-bottom: none;
+  display: block;
+}
+
+.info-box p { margin: 0 0 8px; }
+.info-box p:last-child { margin: 0; }
+
+/* Lien secondaire en bas de page */
+.page-links {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.page-links a {
+  font-size: 14px;
+  color: var(--color-neutral-light);
+}
+
+.page-links a:hover {
+  color: var(--color-primary);
+}

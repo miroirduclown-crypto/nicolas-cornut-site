@@ -1,0 +1,68 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import datesData from '../data/dates.json';
+const dates = datesData.journee_decouverte.dates;
+---
+<Layout title="La Scène intérieure" description="La Scène intérieure : dispositif thérapeutique de groupe pour mettre en scène et intégrer ce qui restait implicite. Journées découverte à Paris.">
+  <div class="page-content">
+    <h1>La Scène intérieure, c'est quoi ?</h1>
+    <h2>Quand ce que l'on vit est trop flou, trop fort ou trop confus… la Scène intérieure nous aide à y voir clair.</h2>
+
+    <p>Certaines expériences reproduisent des impasses.</p>
+    <p>Nous sentons que « quelque chose se joue », sans toujours pouvoir le comprendre ni le relier à du connu.</p>
+    <p>La Scène intérieure est un <strong>dispositif thérapeutique de groupe</strong> qui permet de <strong>mettre en scène</strong> une situation problématique, afin de faire émerger <strong>ce qui restait implicite</strong>, de le représenter, puis de l'<strong>intégrer</strong> progressivement dans une <strong>expérience de soi plus cohérente.</strong></p>
+
+    <h2>Comment ça se passe ?</h2>
+    <p>Une situation problématique est représentée, observée, enrichie par <strong>l'émergence d'affects implicites</strong> que la représentation elle-même fait apparaître, puis rejouée à plusieurs reprises, afin de permettre leur symbolisation, leur mise en lien et leur intégration progressive dans une <strong>représentation d'appui</strong> plus cohérente.</p>
+
+    <h2>Pour qui ?</h2>
+    <ul>
+      <li>Vous vous sentez <strong>bloqué</strong> dans certaines situations</li>
+      <li>Vous vivez des <strong>réactions émotionnelles</strong> que vous ne comprenez pas toujours</li>
+      <li>Vous vous sentez souvent <strong>submergé</strong>, <strong>figé ou confus</strong></li>
+      <li>Vous avez besoin d'un travail thérapeutique <strong>dynamique, corporel et symbolique</strong></li>
+      <li>Vous sentez que parler aide, mais ne suffit pas</li>
+    </ul>
+
+    <h2>Ce que ce travail peut vous apporter :</h2>
+    <ul>
+      <li>Plus de <strong>clarté</strong> intérieure</li>
+      <li>Une meilleure <strong>compréhension</strong> de vos réactions</li>
+      <li>Une <strong>diminution de certaines tensions</strong> ou débordements</li>
+      <li>Un sentiment <strong>d'unité</strong> plus grand</li>
+      <li>Une expérience de soi plus <strong>stable</strong> et plus <strong>apaisée</strong></li>
+    </ul>
+
+    <h2>Ce qui rend ce dispositif unique :</h2>
+    <ul>
+      <li>La scène fait <strong>émerger</strong> les affects implicites</li>
+      <li>Les affects sont <strong>symbolisés</strong> dans la représentation</li>
+      <li>La répétition permet l'<strong>intégration</strong></li>
+      <li>Le groupe agit comme <strong>matrice protectrice</strong> et <strong>espace de résonance</strong></li>
+      <li>Une <strong>représentation intérieure d'appui</strong> se construit progressivement</li>
+    </ul>
+
+    <div class="info-box">
+      <h3>Prochaines dates — Journées découverte à Paris</h3>
+      {dates.length > 0 ? (
+        <ul class="dates-ul">
+          {dates.map(d => <li>{d}</li>)}
+        </ul>
+      ) : (
+        <p><em>Prochaines dates bientôt disponibles.</em></p>
+      )}
+      <a href="/la-scene-interieure-journees-decouverte/" class="btn" style="margin-top:16px;display:inline-block;">En savoir plus sur les Journées découverte</a>
+    </div>
+
+    <p>Professionnel·le de la relation d'aide, vous souhaitez vous former ?<br />
+    La Scène intérieure vous permettra d'animer seul·e un groupe de thérapie — en individuel aussi, ça fonctionne !</p>
+    <a href="/la-scene-interieure-formation/">Voir la page de la formation →</a>
+  </div>
+</Layout>
+<style>
+  ul { padding-left:1.4rem; margin-bottom:1.2rem; }
+  ul li { margin-bottom:0.4rem; }
+  .info-box { background:var(--color-surface); border-left:3px solid var(--color-primary); padding:24px 28px; margin:32px 0; }
+  .info-box h3 { margin-top:0; font-size:1rem; text-transform:uppercase; letter-spacing:.05em; }
+  .info-box p { margin:0 0 6px; }
+</style>
