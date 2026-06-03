@@ -18,22 +18,6 @@
       </form>
     </div>
 
-    <!-- Podcast -->
-    <div class="pre-footer__block">
-      <h2 class="pre-footer__title">Le podcast</h2>
-      <p class="pre-footer__desc"><em>Dans la tête de Nicolas Cornut</em> — disponible sur Spotify</p>
-      <iframe
-        style="border-radius:12px"
-        src="https://open.spotify.com/embed/show/2tt2PDaNfAnByfXpBYs0Ow?utm_source=generator"
-        width="100%"
-        height="152"
-        frameBorder="0"
-        allowfullscreen
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-      ></iframe>
-    </div>
-
   </div>
 </section>
 
@@ -93,13 +77,12 @@
   }
 
   .pre-footer__inner {
-    max-width: var(--max-width-container);
+    max-width: 640px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    align-items: start;
+    text-align: center;
   }
+
+  .pre-footer__form { text-align: left; }
 
   .pre-footer__title {
     font-family: var(--font-heading);
