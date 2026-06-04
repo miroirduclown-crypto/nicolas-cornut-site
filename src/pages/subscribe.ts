@@ -3,7 +3,13 @@ import type { APIRoute } from 'astro';
 export const prerender = false;
 
 function getEnv(locals: any, key: string): string | undefined {
-  return locals?.runtime?.env?.[key] ?? (import.meta.env as any)[key];
+  try {
+    const fromRuntime = locals?.runtime?.env?.[key];
+    if (fromRuntime !== undefined && fromRuntime !== null) return fromRuntime;
+  } catch {}
+  try {
+    return (import.meta.env as any)?.[key];
+  } catch { return undefined; }
 }
 
 export const POST: APIRoute = async ({ request, locals }) => {
