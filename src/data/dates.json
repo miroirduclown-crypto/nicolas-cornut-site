@@ -1,29 +1,29 @@
 {
   "groupe_continu": {
-    "titre": "Groupe Continu PsychothÃ©rapeutique â Dates",
+    "titre": "Groupe Continu PsychothÃÂ©rapeutique Ã¢ÂÂ Dates",
     "dates": [
-      "Samedi 6 et dimanche 7 juin â Week-end Ã  Verdelot",
-      "Vendredi 26 juin â JournÃ©e Ã  Paris",
-      "Vendredi 4 septembre â JournÃ©e Ã  Paris",
-      "Samedi 26 et dimanche 27 septembre â Week-end Ã  Verdelot",
-      "Samedi 24 et dimanche 25 octobre â Week-end Ã  Verdelot",
-      "Vendredi 27 novembre â JournÃ©e Ã  Paris",
-      "Vendredi 11 dÃ©cembre â JournÃ©e Ã  Paris",
-      "Samedi 9 et dimanche 10 janvier 2027 â Week-end Ã  Verdelot"
+      "Samedi 6 et dimanche 7 juin Ã¢ÂÂ Week-end ÃÂ  Verdelot",
+      "Vendredi 26 juin Ã¢ÂÂ JournÃÂ©e ÃÂ  Paris",
+      "Vendredi 4 septembre Ã¢ÂÂ JournÃÂ©e ÃÂ  Paris",
+      "Samedi 26 et dimanche 27 septembre Ã¢ÂÂ Week-end ÃÂ  Verdelot",
+      "Samedi 24 et dimanche 25 octobre Ã¢ÂÂ Week-end ÃÂ  Verdelot",
+      "Vendredi 27 novembre Ã¢ÂÂ JournÃÂ©e ÃÂ  Paris",
+      "Vendredi 11 dÃÂ©cembre Ã¢ÂÂ JournÃÂ©e ÃÂ  Paris",
+      "Samedi 9 et dimanche 10 janvier 2027 Ã¢ÂÂ Week-end ÃÂ  Verdelot"
     ]
   },
   "groupe_ponctuel": {
-    "titre": "Groupe Ponctuel ThÃ©rapeutique â Dates",
+    "titre": "Groupe Ponctuel ThÃÂ©rapeutique Ã¢ÂÂ Dates",
     "dates": []
   },
   "scene_interieure_formation": {
-    "titre": "La ScÃ¨ne intÃ©rieure â Formation â Dates",
+    "titre": "La ScÃÂ¨ne intÃÂ©rieure Ã¢ÂÂ Formation Ã¢ÂÂ Dates",
     "dates": [
-      "dates Ã  venir"
+      "dates ÃÂ  venir"
     ]
   },
   "supervision": {
-    "titre": "Supervision â Dates",
+    "titre": "Supervision Ã¢ÂÂ Dates",
     "dates": [
       "7 juillet 2026",
       "15 septembre 2026",
@@ -33,12 +33,12 @@
     ]
   },
   "journee_decouverte": {
-    "titre": "La ScÃ¨ne intÃ©rieure â JournÃ©e dÃ©couverte â Dates",
+    "titre": "La ScÃÂ¨ne intÃÂ©rieure Ã¢ÂÂ JournÃÂ©e dÃÂ©couverte Ã¢ÂÂ Dates",
     "dates": [
       "vendredi 18 septembre 2026",
       "samedi 3 octobre 2026",
       "vendredi 6 novembre 2026",
-      "vendredi 4 dÃ©cembre 2026",
+      "vendredi 4 dÃÂ©cembre 2026",
       "lundi 25 janvier 2027"
     ]
   }
