@@ -5,6 +5,19 @@ export const prerender = false;
 
 const FILE_PATH = 'src/data/dates.json';
 
+// Décodage / encodage base64 compatibles UTF-8 (atob/btoa seuls corrompent les accents)
+function b64ToUtf8(b64: string): string {
+  const binary = atob(b64.replace(/\n/g, ''));
+  const bytes = Uint8Array.from(binary, (c) => c.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+}
+function utf8ToB64(str: string): string {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  for (const b of bytes) binary += String.fromCharCode(b);
+  return btoa(binary);
+}
+
 export const POST: APIRoute = async ({ request }) => {
   const headers = { 'Content-Type': 'application/json' };
 
@@ -36,7 +49,8 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(JSON.stringify({ ok: false, error: `Lecture GitHub échouée : ${fileData.message || 'réponse invalide'}` }), { status: 500, headers });
     }
 
-    const current = JSON.parse(atob(fileData.content.replace(/\n/g, '')));
+    const currentJson = b64ToUtf8(fileData.content);
+    const current = JSON.parse(currentJson);
 
     // Met à jour les dates
     for (const [key, value] of Object.entries(body)) {
@@ -46,10 +60,9 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const newJson = JSON.stringify(current, null, 2);
-    const newContent = btoa(unescape(encodeURIComponent(newJson)));
+    const newContent = utf8ToB64(newJson);
 
     // Rien n'a changé → pas de commit inutile
-    const currentJson = atob(fileData.content.replace(/\n/g, ''));
     if (newJson === currentJson) {
       return new Response(JSON.stringify({ ok: true, unchanged: true }), { status: 200, headers });
     }
