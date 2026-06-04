@@ -1,18 +1,9 @@
 import type { APIRoute } from 'astro';
+import { getEnv } from '../lib/env';
 
 export const prerender = false;
 
-function getEnv(locals: any, key: string): string | undefined {
-  try {
-    const fromRuntime = locals?.runtime?.env?.[key];
-    if (fromRuntime !== undefined && fromRuntime !== null) return fromRuntime;
-  } catch {}
-  try {
-    return (import.meta.env as any)?.[key];
-  } catch { return undefined; }
-}
-
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   const headers = { 'Content-Type': 'application/json' };
 
   try {
@@ -22,8 +13,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
       return new Response(JSON.stringify({ success: false, error: 'Email invalide.' }), { status: 400, headers });
     }
 
-    const apiKey = getEnv(locals, 'BREVO_API_KEY');
-    const listId = Number(getEnv(locals, 'BREVO_LIST_ID')) || 28;
+    const apiKey = getEnv('BREVO_API_KEY');
+    const listId = Number(getEnv('BREVO_LIST_ID')) || 28;
 
     const res = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',

@@ -1,27 +1,17 @@
 import type { APIRoute } from 'astro';
+import { getEnv } from '../../lib/env';
 
 export const prerender = false;
 
 const FILE_PATH = 'src/data/dates.json';
 
-// Récupère une variable d'env depuis le runtime Cloudflare (prod) ou import.meta.env (local dev)
-function getEnv(locals: any, key: string): string | undefined {
-  try {
-    const fromRuntime = locals?.runtime?.env?.[key];
-    if (fromRuntime !== undefined && fromRuntime !== null) return fromRuntime;
-  } catch {}
-  try {
-    return (import.meta.env as any)?.[key];
-  } catch { return undefined; }
-}
-
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   const headers = { 'Content-Type': 'application/json' };
 
   try {
-    const GITHUB_TOKEN  = getEnv(locals, 'GITHUB_TOKEN');
-    const GITHUB_REPO   = getEnv(locals, 'GITHUB_REPO')  || 'miroirduclown-crypto/nicolas-cornut-site';
-    const GITHUB_BRANCH = getEnv(locals, 'GITHUB_BRANCH') || 'main';
+    const GITHUB_TOKEN  = getEnv('GITHUB_TOKEN');
+    const GITHUB_REPO   = getEnv('GITHUB_REPO')  || 'miroirduclown-crypto/nicolas-cornut-site';
+    const GITHUB_BRANCH = getEnv('GITHUB_BRANCH') || 'main';
 
     const ghHeaders = {
       Authorization: `token ${GITHUB_TOKEN}`,

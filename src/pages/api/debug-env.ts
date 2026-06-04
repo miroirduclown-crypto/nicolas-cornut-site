@@ -1,24 +1,16 @@
 import type { APIRoute } from 'astro';
+import { getEnv } from '../../lib/env';
 
 export const prerender = false;
 
-export const GET: APIRoute = (ctx) => {
-  const out: string[] = [];
-  try {
-    out.push('locals: ' + (ctx.locals ? 'present' : 'null'));
-  } catch (e) { out.push('locals err: ' + String(e)); }
-  try {
-    const rt = (ctx.locals as any)?.runtime;
-    out.push('runtime: ' + (rt ? 'present' : 'null'));
-  } catch (e) { out.push('runtime err: ' + String(e)); }
-  try {
-    const env = (ctx.locals as any)?.runtime?.env;
-    out.push('runtime.env: ' + (env ? 'present' : 'null'));
-    if (env) out.push('keys: ' + Object.keys(env).join(','));
-  } catch (e) { out.push('env err: ' + String(e)); }
-
-  return new Response(out.join('\n'), {
+export const GET: APIRoute = () => {
+  // Ne révèle pas les valeurs : juste si chaque clé est présente
+  const status = {
+    GITHUB_TOKEN: getEnv('GITHUB_TOKEN') ? 'OK' : 'MANQUANT',
+    BREVO_API_KEY: getEnv('BREVO_API_KEY') ? 'OK' : 'MANQUANT',
+  };
+  return new Response(JSON.stringify(status), {
     status: 200,
-    headers: { 'Content-Type': 'text/plain' },
+    headers: { 'Content-Type': 'application/json' },
   });
 };
