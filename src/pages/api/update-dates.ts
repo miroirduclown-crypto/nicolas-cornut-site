@@ -7,10 +7,16 @@ const GITHUB_REPO   = import.meta.env.GITHUB_REPO  || 'miroirduclown-crypto/nico
 const GITHUB_BRANCH = import.meta.env.GITHUB_BRANCH || 'main';
 const FILE_PATH     = 'src/data/dates.json';
 
+const GITHUB_HEADERS = {
+  Authorization: `token ${GITHUB_TOKEN}`,
+  Accept: 'application/vnd.github+json',
+  'User-Agent': 'nicolas-cornut-site',
+};
+
 async function getFileSha(): Promise<{ sha: string; content: string }> {
   const res = await fetch(
     `https://api.github.com/repos/${GITHUB_REPO}/contents/${FILE_PATH}?ref=${GITHUB_BRANCH}`,
-    { headers: { Authorization: `token ${GITHUB_TOKEN}`, Accept: 'application/vnd.github+json' } }
+    { headers: GITHUB_HEADERS }
   );
   const data = await res.json() as { sha: string; content: string };
   return data;
@@ -41,8 +47,7 @@ export const POST: APIRoute = async ({ request }) => {
       {
         method: 'PUT',
         headers: {
-          Authorization: `token ${GITHUB_TOKEN}`,
-          Accept: 'application/vnd.github+json',
+          ...GITHUB_HEADERS,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
