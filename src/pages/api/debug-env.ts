@@ -2,25 +2,23 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-export const GET: APIRoute = async ({ locals }) => {
-  const headers = { 'Content-Type': 'application/json' };
-
-  const info: any = {
-    has_locals: !!locals,
-    has_runtime: !!(locals as any)?.runtime,
-    has_runtime_env: !!(locals as any)?.runtime?.env,
-    runtime_env_keys: [],
-    import_meta_keys: [],
-  };
-
+export const GET: APIRoute = (ctx) => {
+  const out: string[] = [];
   try {
-    const env = (locals as any)?.runtime?.env;
-    if (env) info.runtime_env_keys = Object.keys(env);
-  } catch (e) { info.runtime_err = String(e); }
-
+    out.push('locals: ' + (ctx.locals ? 'present' : 'null'));
+  } catch (e) { out.push('locals err: ' + String(e)); }
   try {
-    info.import_meta_keys = Object.keys(import.meta.env || {});
-  } catch (e) { info.meta_err = String(e); }
+    const rt = (ctx.locals as any)?.runtime;
+    out.push('runtime: ' + (rt ? 'present' : 'null'));
+  } catch (e) { out.push('runtime err: ' + String(e)); }
+  try {
+    const env = (ctx.locals as any)?.runtime?.env;
+    out.push('runtime.env: ' + (env ? 'present' : 'null'));
+    if (env) out.push('keys: ' + Object.keys(env).join(','));
+  } catch (e) { out.push('env err: ' + String(e)); }
 
-  return new Response(JSON.stringify(info, null, 2), { status: 200, headers });
+  return new Response(out.join('\n'), {
+    status: 200,
+    headers: { 'Content-Type': 'text/plain' },
+  });
 };
