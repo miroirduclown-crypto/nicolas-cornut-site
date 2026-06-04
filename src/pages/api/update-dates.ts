@@ -45,7 +45,14 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
-    const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(current, null, 2))));
+    const newJson = JSON.stringify(current, null, 2);
+    const newContent = btoa(unescape(encodeURIComponent(newJson)));
+
+    // Rien n'a changé → pas de commit inutile
+    const currentJson = atob(fileData.content.replace(/\n/g, ''));
+    if (newJson === currentJson) {
+      return new Response(JSON.stringify({ ok: true, unchanged: true }), { status: 200, headers });
+    }
 
     // Commit via l'API GitHub
     const putRes = await fetch(
