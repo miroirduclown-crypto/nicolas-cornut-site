@@ -3,13 +3,39 @@ import { getEnv } from '../lib/env';
 
 export const prerender = false;
 
+const ALLOWED_HOSTS = ['nicolas-cornut.com', 'www.nicolas-cornut.com'];
+
+function originAllowed(request: Request): boolean {
+  const origin = request.headers.get('origin');
+  const referer = request.headers.get('referer');
+  const src = origin || referer || '';
+  if (!src) return false; // pas d'origine = requête non navigateur → refus
+  try {
+    const host = new URL(src).hostname;
+    return ALLOWED_HOSTS.includes(host);
+  } catch {
+    return false;
+  }
+}
+
 export const POST: APIRoute = async ({ request }) => {
   const headers = { 'Content-Type': 'application/json' };
 
   try {
-    const { email, prenom } = await request.json();
+    // Sécurité : seules les requêtes venant du site sont acceptées
+    if (!originAllowed(request)) {
+      return new Response(JSON.stringify({ success: false, error: 'Requête non autorisée.' }), { status: 403, headers });
+    }
 
-    if (!email || !email.includes('@')) {
+    const { email, prenom, website } = await request.json();
+
+    // Honeypot anti-bot : ce champ caché doit rester vide
+    if (website) {
+      return new Response(JSON.stringify({ success: true }), { status: 200, headers });
+    }
+
+    // Validation email plus stricte
+    if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
       return new Response(JSON.stringify({ success: false, error: 'Email invalide.' }), { status: 400, headers });
     }
 

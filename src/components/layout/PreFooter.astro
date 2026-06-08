@@ -14,6 +14,9 @@
           <input type="email" name="email" placeholder="Votre adresse e-mail *" required class="pre-footer__input" autocomplete="email" />
           <button type="submit" class="pre-footer__btn" id="prefooter-btn">Je m'inscris</button>
         </div>
+        <!-- Honeypot anti-bot : invisible, doit rester vide -->
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+
         <p class="pre-footer__msg" id="prefooter-msg" aria-live="polite"></p>
       </form>
     </div>
@@ -46,9 +49,10 @@
     e.preventDefault();
     if (!form || !btn || !msg) return;
 
-    const data   = new FormData(form);
-    const email  = (data.get('email')  as string)?.trim();
-    const prenom = (data.get('prenom') as string)?.trim();
+    const data    = new FormData(form);
+    const email   = (data.get('email')   as string)?.trim();
+    const prenom  = (data.get('prenom')  as string)?.trim();
+    const website = (data.get('website') as string) || '';
 
     if (!email) {
       msg.textContent = 'Veuillez saisir votre adresse e-mail.';
@@ -64,7 +68,7 @@
       const res  = await fetch('/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, prenom }),
+        body: JSON.stringify({ email, prenom, website }),
       });
       const json = await res.json();
 
