@@ -33,10 +33,29 @@ import Layout from '../components/layout/Layout.astro';
     <p>Attiré par la puissance de la méthode, je me forme à la Gestalt-Thérapie à l'École Parisienne de Gestalt. Je me forme aussi au clown et je fonde plusieurs collectifs avec qui nous créons des spectacles semi-improvisés. C'est de ce processus qu'est né Alberstein, mon personnage de clown.</p>
     <p>Je commence à animer les groupes de Clown-Gestalt en 2008, et je n'ai depuis lors pas cessé de me réinventer. Comment faire rire ? Comment transformer le bloqué en beauté ? Comment surprendre ? Comment être vivant, engagé, libre, faire respecter ses limites ? Comment être créateur et créature ?</p>
     <p>Voici quelques mots sur mon parcours, tel que je peux le dire aujourd'hui. C'est avec toute la densité de cette vie curieuse que j'accompagne à présent les personnes qui viennent à moi. Et nous traçons ensemble de nouveaux chemins de vie.</p>
+
+    <div class="certifications">
+      <p class="certifications-text"><strong>Nicolas Cornut est superviseur agréé EAGT. Il est membre actif de la FPGT.</strong></p>
+      <div class="certifications-logos">
+        <img src="/images/Logo EAGT.png" alt="EAGT - European Association for Gestalt Therapy" class="cert-logo cert-logo-eagt" />
+        <img src="/images/Logo FPGT.png" alt="FPGT - Fédération des professionnels de Gestalt-thérapie" class="cert-logo" />
+      </div>
+    </div>
   </div>
 </Layout>
 <style>
   blockquote { border-left:3px solid var(--color-primary); padding:16px 24px; margin:32px 0; background:var(--color-surface); font-style:italic; }
   blockquote p { margin:0 0 8px; }
   blockquote p:last-child { margin:0; font-style:normal; font-weight:600; }
+
+  .certifications { margin-top: 48px; padding-top: 32px; border-top: 1px solid #ddd; display: flex; flex-direction: column; gap: 20px; }
+  .certifications-text { margin: 0; font-size: 16px; line-height: 1.6; width: 100%; }
+  .cert-logo { height: 80px; width: auto; }
+  .cert-logo-eagt { height: 110px; }
+  .certifications-logos { display: flex; gap: 30px; align-items: center; }
+
+  @media (max-width: 768px) {
+    .certifications { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .certifications-logos { flex-direction: row; gap: 20px; }
+  }
 </style>

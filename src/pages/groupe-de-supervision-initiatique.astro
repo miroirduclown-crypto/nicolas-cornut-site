@@ -32,10 +32,29 @@ const dates = datesData.supervision.dates;
     </div>
     <p>Outre la supervision en groupe, je suis disponible pour de la supervision individuelle.</p>
     <a href="mailto:nicolas.cornut@gmail.com" class="btn">Contactez-moi</a>
+
+    <div class="certifications">
+      <p class="certifications-text"><strong>Nicolas Cornut est superviseur agréé EAGT. Il est membre actif de la FPGT.</strong></p>
+      <div class="certifications-logos">
+        <img src="/images/Logo EAGT.png" alt="EAGT - European Association for Gestalt Therapy" class="cert-logo cert-logo-eagt" />
+        <img src="/images/Logo FPGT.png" alt="FPGT - Fédération des professionnels de Gestalt-thérapie" class="cert-logo" />
+      </div>
+    </div>
   </div>
 </Layout>
 <style>
   .info-box { background:var(--color-surface); border-left:3px solid var(--color-primary); padding:24px 28px; margin:32px 0; }
   .info-box p { margin:0 0 8px; }
   .info-box p:last-child { margin:0; }
+
+  .certifications { margin-top: 48px; padding-top: 32px; border-top: 1px solid #ddd; display: flex; flex-direction: column; gap: 20px; }
+  .certifications-text { margin: 0; font-size: 16px; line-height: 1.6; width: 100%; }
+  .cert-logo { height: 80px; width: auto; }
+  .cert-logo-eagt { height: 110px; }
+  .certifications-logos { display: flex; gap: 30px; align-items: center; }
+
+  @media (max-width: 768px) {
+    .certifications { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .certifications-logos { flex-direction: row; gap: 20px; }
+  }
 </style>
