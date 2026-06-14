@@ -76,11 +76,20 @@ h2 {
 }
 
 h3 {
-  font-family: var(--font-display); /* Ribeye Marrow */
-  font-weight: 400;
-  font-size: 1.3rem;
+  font-family: var(--font-body); /* Open Sans */
+  font-weight: 600;
+  font-size: 1.1rem;
   color: var(--color-primary);
   margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-family: var(--font-body); /* Open Sans */
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-neutral);
+  margin-top: 1.25rem;
   margin-bottom: 0.5rem;
 }
 
