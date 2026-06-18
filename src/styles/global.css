@@ -88,7 +88,7 @@ h4 {
   font-family: var(--font-body); /* Open Sans */
   font-weight: 600;
   font-size: 1rem;
-  color: var(--color-neutral);
+  color: var(--color-primary);
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
 }
