@@ -64,9 +64,9 @@ h1 {
 }
 
 h2 {
-  font-family: var(--font-display); /* Ribeye Marrow — identique à clown-gestalt.fr */
-  font-weight: 400;
-  font-size: 1.3rem;
+  font-family: var(--font-body); /* Open Sans */
+  font-weight: 600;
+  font-size: 1.1rem;
   color: var(--color-primary);
   margin-top: 2rem;
   margin-bottom: 0.75rem;
