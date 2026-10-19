@@ -79,7 +79,8 @@ npx wrangler secret list --name nicolas-cornut-site   # vérifier
   "groupe_ponctuel":           { "titre": "...", "dates": [] },
   "scene_interieure_formation":{ "titre": "...", "dates": [...] },
   "supervision":               { "titre": "...", "dates": [...] },
-  "journee_decouverte":        { "titre": "...", "dates": [...] }
+  "journee_pratique":          { "titre": "...", "dates": [...] },
+  "atelier_visio":             { "titre": "...", "dates": [...] }
 }
 ```
 - Le champ `titre` n'apparaît que dans l'interface du back office (libellé de section), pas sur le site public.
@@ -88,12 +89,15 @@ npx wrangler secret list --name nicolas-cornut-site   # vérifier
 ### Sections du back office (ordre dans `admin/index.astro`)
 1. Groupe Continu Psychothérapeutique → `/particuliers/groupe-continu-de-psychotherapie/`
 2. Groupe de supervision → `/groupe-de-supervision-initiatique/`
-3. La Scène intérieure – Journée découverte → `/la-scene-interieure-journees-decouverte/`
-4. La Scène intérieure – Formation → `/la-scene-interieure-formation/`
+3. La Scène intérieure – Journée de pratique → `/la-scene-interieure-journee-de-pratique/`
+4. La Scène intérieure – Atelier en visio → `/la-scene-interieure-atelier-en-visio/`
+5. La Scène intérieure – Formation → `/la-scene-interieure-formation/`
 
 ### Pages qui lisent `dates.json`
 `import datesData from '../data/dates.json'` puis `datesData.<clé>.dates`. Concernées :
-`particuliers/groupe-continu-de-psychotherapie`, `groupe-de-supervision-initiatique`, `la-scene-interieure-formation`, `la-scene-interieure-journees-decouverte`, `la-scene-interieure` (affiche les dates de `journee_decouverte`).
+`particuliers/groupe-continu-de-psychotherapie`, `groupe-de-supervision-initiatique`, `la-scene-interieure-formation`, `la-scene-interieure-journee-de-pratique`, `la-scene-interieure-atelier-en-visio`, `la-scene-interieure` (affiche les dates de `journee_pratique`).
+
+⚠️ `api/update-dates.ts` ne met à jour que les clés **déjà présentes** dans `dates.json` : toute nouvelle section du back office doit d'abord être ajoutée dans ce fichier.
 
 ---
 
@@ -101,8 +105,8 @@ npx wrangler secret list --name nicolas-cornut-site   # vérifier
 
 ### Menus (src/components/layout/Header.astro)
 Tableau `nav` en haut du fichier. `href: null` = parent non cliquable (dropdown seul).
-- **La Scène intérieure** (`/la-scene-interieure/`) : C'est quoi ?, La formation
-- **Particuliers** (non cliquable) : Journées découverte, Groupe Continu de Gestalt, Miroir du Clown, Accompagnement individuel
+- **La Scène intérieure** (`/la-scene-interieure/`) : C'est quoi ?, Journée de pratique, Atelier en visio, La formation
+- **Particuliers** (non cliquable) : La Scène intérieure, Groupe Continu de Gestalt, Miroir du Clown, Accompagnement individuel
 - **Professionnels** (non cliquable) : Groupe de supervision initiatique, La Scène intérieure – formation
 - **Qui suis-je ?** (`/qui-suis-je/`) : La Gestalt-thérapie, Ma déontologie, Mon parcours, Contenus en ligne
 
@@ -111,7 +115,8 @@ Tableau `nav` en haut du fichier. `href: null` = parent non cliquable (dropdown 
 |---|---|
 | Accueil | `index.astro` |
 | La Scène intérieure | `la-scene-interieure.astro` |
-| LSI – Journées découverte | `la-scene-interieure-journees-decouverte.astro` |
+| LSI – Journée de pratique | `la-scene-interieure-journee-de-pratique.astro` |
+| LSI – Atelier en visio | `la-scene-interieure-atelier-en-visio.astro` |
 | LSI – Formation | `la-scene-interieure-formation.astro` |
 | Groupe Continu Psychothérapeutique | `particuliers/groupe-continu-de-psychotherapie.astro` |
 | Accompagnement individuel | `particuliers/accompagnement-individuel.astro` |
@@ -128,8 +133,9 @@ Tableau `nav` en haut du fichier. `href: null` = parent non cliquable (dropdown 
 |---|---|
 | `/supervision/` | `/groupe-de-supervision-initiatique/` |
 | `/particuliers/` | `/la-scene-interieure/` |
-| `/groupe-therapeutique-ponctuel/` | `/la-scene-interieure-journees-decouverte/` |
-| `/la-scene-interieure-groupes-ponctuels-de-pratique/` | `/la-scene-interieure-journees-decouverte/` |
+| `/groupe-therapeutique-ponctuel/` | `/la-scene-interieure-journee-de-pratique/` |
+| `/la-scene-interieure-groupes-ponctuels-de-pratique/` | `/la-scene-interieure-journee-de-pratique/` |
+| `/la-scene-interieure-journees-decouverte/` | `/la-scene-interieure-journee-de-pratique/` |
 
 ---
 

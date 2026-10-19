@@ -33,11 +33,15 @@
       "mardi 22 juin 2027"
     ]
   },
-  "journee_decouverte": {
-    "titre": "La Scène intérieure – Journée découverte — Dates",
+  "journee_pratique": {
+    "titre": "La Scène intérieure – Journée de pratique — Dates",
     "dates": [
       "samedi 5 décembre (inscription avant mardi 1er déc.)",
       "vendredi 22 janvier 2027 (inscription avant lundi 18 jan.)"
     ]
+  },
+  "atelier_visio": {
+    "titre": "La Scène intérieure – Atelier en visio — Dates",
+    "dates": []
   }
 }
