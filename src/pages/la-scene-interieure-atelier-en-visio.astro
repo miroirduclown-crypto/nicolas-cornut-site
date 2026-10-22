@@ -12,6 +12,8 @@ const dates = datesData.atelier_visio.dates;
     <p>La Scène intérieure est un dispositif thérapeutique qui permet d’y voir plus clair.<br />
     L’atelier en visio permet de l’expérimenter depuis chez soi.</p>
 
+    <img src="/images/scene-interieure-visio.webp" alt="Une femme pensive, entourée de petits personnages qui représentent ses différents ressentis" width="1374" height="1145" class="illustration" />
+
     <p>Une personne apporte une situation qui la préoccupe. Les autres participants sont choisis pour symboliser les affects qui sont en jeu dans le vécu présent de la personne. Il ne s’agit pas de mise en scène, ni de rôle à jouer. Ensemble, on déplie ce qui était contenu dans la situation, jusqu’à ce que le sens apparaisse.</p>
 
     <p>Le brouillard se dissipe, les nœuds se dénouent. La situation problématique s’intègre dans un vécu cohérent.</p>
@@ -22,7 +24,7 @@ const dates = datesData.atelier_visio.dates;
 
     <p>Vous avez une situation qui revient ? Venez la déposer, ou prenez place comme participant.</p>
 
-    <h2>Conditions de participation</h2>
+    <h2 class="clear">Conditions de participation</h2>
     <p>Prévoyez un endroit calme où vous ne serez pas dérangé·e, un ordinateur avec caméra et micro, et une connexion internet stable.</p>
 
     <h2>Tarif</h2>
@@ -57,3 +59,30 @@ const dates = datesData.atelier_visio.dates;
     </div>
   </div>
 </Layout>
+
+<style>
+  .illustration {
+    float: right;
+    width: 46%;
+    height: auto;
+    margin: 0.4rem 0 1.5rem 2rem;
+    border-radius: 4px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  }
+  .clear {
+    clear: both;
+  }
+  @media (min-width: 641px) {
+    p {
+      text-align: justify;
+      hyphens: auto;
+    }
+  }
+  @media (max-width: 640px) {
+    .illustration {
+      float: none;
+      width: 100%;
+      margin: 1.5rem 0;
+    }
+  }
+</style>
