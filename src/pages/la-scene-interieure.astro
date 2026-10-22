@@ -13,9 +13,10 @@ const dates = datesData.journee_pratique.dates;
     <p>La Scène intérieure est un <strong>dispositif thérapeutique de groupe</strong> qui permet de <strong>mettre en scène</strong> une situation problématique, afin de faire émerger <strong>ce qui restait implicite</strong>, de le représenter, puis de l'<strong>intégrer</strong> progressivement dans une <strong>expérience de soi plus cohérente.</strong></p>
 
     <h2>Comment ça se passe ?</h2>
+    <img src="/images/scene-interieure.webp" alt="Un homme pensif, entouré de petits personnages qui représentent ses différents ressentis" width="1536" height="1024" class="illustration" />
     <p>Une situation problématique est représentée, observée, enrichie par <strong>l'émergence d'affects implicites</strong> que la représentation elle-même fait apparaître, puis rejouée à plusieurs reprises, afin de permettre leur symbolisation, leur mise en lien et leur intégration progressive dans une <strong>représentation d'appui</strong> plus cohérente.</p>
 
-    <h2>Pour qui ?</h2>
+    <h2 class="clear">Pour qui ?</h2>
     <ul>
       <li>Vous vous sentez <strong>bloqué</strong> dans certaines situations</li>
       <li>Vous vivez des <strong>réactions émotionnelles</strong> que vous ne comprenez pas toujours</li>
@@ -65,4 +66,19 @@ const dates = datesData.journee_pratique.dates;
   .info-box { background:var(--color-surface); border-left:3px solid var(--color-primary); padding:24px 28px; margin:32px 0; }
   .info-box h3 { margin-top:0; font-size:1rem; text-transform:uppercase; letter-spacing:.05em; }
   .info-box p { margin:0 0 6px; }
+  .illustration {
+    float: right;
+    width: 46%;
+    height: auto;
+    margin: 0.4rem 0 1.5rem 2rem;
+    border-radius: 4px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  }
+  .clear { clear: both; }
+  @media (min-width: 641px) {
+    p { text-align: justify; hyphens: auto; }
+  }
+  @media (max-width: 640px) {
+    .illustration { float: none; width: 100%; margin: 1.5rem 0; }
+  }
 </style>
