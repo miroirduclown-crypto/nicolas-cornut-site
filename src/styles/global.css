@@ -97,6 +97,15 @@ p {
   margin-bottom: 1.1rem;
 }
 
+/* Texte justifié dans le contenu des pages (sur ordinateur) */
+@media (min-width: 641px) {
+  .page-content p,
+  .page-content li {
+    text-align: justify;
+    hyphens: auto;
+  }
+}
+
 /* Listes avec puces noires dans le contenu des pages */
 .page-content ul:not(.dates-ul) {
   list-style: disc;
