@@ -2,6 +2,7 @@
 import Layout from '../components/layout/Layout.astro';
 import datesData from '../data/dates.json';
 const dates = datesData.journee_pratique.dates;
+const datesVisio = datesData.atelier_visio.dates;
 ---
 <Layout title="La Scène intérieure" description="La Scène intérieure : dispositif thérapeutique de groupe pour mettre en scène et intégrer ce qui restait implicite. Journées de pratique à Paris et ateliers en visio.">
   <div class="page-content">
@@ -44,7 +45,17 @@ const dates = datesData.journee_pratique.dates;
     </ul>
 
     <div class="info-box">
-      <h3>Prochaines dates — Journées de pratique à Paris</h3>
+      <h3>Prochaines dates — Ateliers en visio</h3>
+      {datesVisio.length > 0 ? (
+        <ul class="dates-ul">
+          {datesVisio.map(d => <li>{d}</li>)}
+        </ul>
+      ) : (
+        <p><em>Prochaines dates bientôt disponibles.</em></p>
+      )}
+      <a href="/la-scene-interieure-atelier-en-visio/" class="btn" style="margin-top:16px;display:inline-block;">En savoir plus sur les Ateliers en visio</a>
+
+      <h3 class="info-box__next">Prochaines dates — Journées de pratique à Paris</h3>
       {dates.length > 0 ? (
         <ul class="dates-ul">
           {dates.map(d => <li>{d}</li>)}
@@ -66,6 +77,7 @@ const dates = datesData.journee_pratique.dates;
   .info-box { background:var(--color-surface); border-left:3px solid var(--color-primary); padding:24px 28px; margin:32px 0; }
   .info-box h3 { margin-top:0; font-size:1rem; text-transform:uppercase; letter-spacing:.05em; }
   .info-box p { margin:0 0 6px; }
+  .info-box .info-box__next { margin-top:32px; padding-top:24px; border-top:1px solid var(--color-border); }
   .illustration {
     float: right;
     width: 46%;
